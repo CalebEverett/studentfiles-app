@@ -1,0 +1,53 @@
+{
+  "name": "ccc-studentfiles",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "postinstall": "cp -R node_modules/@salesforce-ux/design-system/assets public/assets && node build.js && systemctl restart studentfiles",
+    "test": "/usr/src/app/node_modules/mocha/bin/mocha"
+  },
+  "engines": {
+    "node": ""
+  },
+  "dependencies": {
+    "@salesforce-ux/design-system": "",
+    "aws-sdk": "",
+    "base62": "",
+    "bluebird": "",
+    "body-parser": "",
+    "cookie-parser": "",
+    "express": "",
+    "fs-extra": "",
+    "googleapis": "^8.0.0",
+    "hbs": "",
+    "jsonwebtoken": "^7.0.0",
+    "mime-types": "",
+    "moment": "",
+    "morgan": "",
+    "node-cache": "^3.2.1",
+    "node-fetch": "^1.5.3",
+    "numeral": "",
+    "pg-promise": "",
+    "request": "",
+    "serve-favicon": ""
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-preset-es2015-node": "^6.1.1",
+    "chai": "",
+    "chai-as-promised": "^5.3.0",
+    "chalk": "",
+    "debug": "",
+    "fs-extra": "",
+    "mocha": "^2.5.3",
+    "nodemon": "",
+    "request-debug": "",
+    "rewire": "^2.5.1"
+  },
+  "standard": {
+    "globals": [
+      "it",
+      "describe"
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+a {
+  color: #00B7FF;
+}
+
+.slds-button--fullwidth {
+	display: block;
+	margin: 0 auto;
+}
+
+.loginprofile {
+	display: block;
+	width: 125px;
+	margin: 10px auto;
+}
+
+.round {
+	border-radius: 50%;
+}
+
+.login-container {
+	max-width: 400px;
+}
+
+.login-container p {
+	margin-bottom: 10px;
+}
+
+.unsaved-text {
+	color: rgb(255, 154, 60);
+	font-weight: bold;
+}
+
+.slds-is-sortable {
+	z-index: 1000;
+}
+
+.is-sorted .slds-button {
+  visibility: visible;
+}
+
+.is-sorted div {
+  font-weight: bold;
+}
+
+.searchFind {
+	color: red;
+}
+
+.slds-input-laptop-color {
+    background-color: #fff;
+    color: #16325c;
+    border: 1px solid #d8dde6;
+    border-radius: .25rem;
+    width: 100%;
+    transition: border .1s linear,background-color .1s linear;
+    display: inline-block;
+    padding: 0 1rem 0 .75rem;
+    line-height: 2.125rem;
+    min-height: calc(2.125rem + 2px);
+}
+
+.unsaved-border {
+	border: 2px solid rgb(255, 154, 60);
+}
+
+.vis-toggle {
+	transition: 250ms ease-in-out;
+	transform-origin: 50% 50%;
+}

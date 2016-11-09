@@ -1,0 +1,222 @@
+<!-- MASTHEAD -->
+<p class="slds-text-heading--label slds-m-bottom--small">Career College of California</p>
+<!-- / MASTHEAD -->
+
+<!-- PAGE HEADER -->
+<div class="slds-page-header slds-m-bottom--large" role="banner">
+  <div class="slds-grid">
+    <div class="slds-col slds-has-flexi-truncate">
+      <div class="slds-media">
+        <div class="slds-media__figure">
+          <span class="slds-avatar slds-avatar--large">
+            <img src="https://s3-us-west-1.amazonaws.com/cccstudentphotos/{{contact.student_id__c}}.jpg" alt="portrait" />
+          </span>       </div>
+        <div class="slds-media__body">
+          <p class="slds-text-heading--label">{{contact.student_id__c}}</p>
+          <h1 class="slds-text-heading--medium">{{contact.name}}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="slds-col slds-no-flex slds-align-middle">
+      <div class="slds-button-group" role="group">
+        <a class="slds-button slds-button--neutral" href="/auth/logout">Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="slds-grid slds-wrap slds-grid--pull-padded slds-page-header__detail-row">
+    <div class="slds-col--padded slds-m-bottom--large slds-size--1-of-1 slds-medium-size--1-of-4">
+      <dl>
+        <dt>
+          <p class="slds-text-heading--label" title="Program">Program</p>
+        </dt>
+        <dd>
+          <p class="slds-text-body--regular" title="{{contact.program_name__c}}">{{contact.program_name__c}}</p>
+        </dd>
+      </dl>
+    </div>
+    <div class="slds-col--padded slds-size--1-of-1 slds-m-bottom--large slds-medium-size--1-of-4">
+      <dl>
+        <dt>
+          <p class="slds-text-heading--label" title="Start">Start</p>
+        </dt>
+        <dd>
+          <p class="slds-text-body--regular" title="{{formatDate contact.start_date__c}}">{{formatDate contact.start_date__c}}</p>
+        </dd>
+      </dl>
+    </div>
+    <div class="slds-col--padded slds-size--1-of-1 slds-m-bottom--large slds-medium-size--1-of-4">
+      <dl>
+        <dt>
+          <p class="slds-text-heading--label" title="End">End</p>
+        </dt>
+        <dd>
+          <p class="slds-text-body--regular" title="{{endDate contact}}">{{endDate contact}}</p>
+        </dd>
+      </dl>
+    </div>
+    <div class="slds-col--padded slds-size--1-of-1 slds-m-bottom--large slds-medium-size--1-of-4">
+      <dl>
+        <dt>
+          <p class="slds-text-heading--label" title="Status">Status</p>
+        </dt>
+        <dd>
+          <p class="slds-text-body--regular" title="{{contact.status__c}}">{{contact.status__c}}</p>
+        </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+<!-- / PAGE HEADER -->
+<!-- PRIMARY CONTENT WRAPPER -->
+<div class="myapp">
+  <!-- AGREEMENTS CARD -->
+  <div class="slds-card">
+    <div class="slds-card__header slds-grid">
+      <div class="slds-media slds-media--center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+          <svg aria-hidden="true" class="slds-icon slds-icon-standard-contract slds-icon--small">
+            <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contract"></use>
+          </svg>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-text-heading--small slds-truncate">Agreements</h2>
+        </div>
+      </div>
+    </div>
+    <div class="slds-card__body">
+      <table class="slds-table slds-table--bordered slds-max-medium-table--stacked-horizontal slds-no-row-hover">
+        <thead>
+          <tr>
+            <th class="slds-text-heading--label slds-size--1-of-2" scope="col">Name</th>
+            <th class="slds-text-heading--label slds-size--1-of-2" scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each agreements}}
+          <tr class="slds-hint-parent">
+              <td class="slds-size--1-of-2" data-label="Name"><a href="/download/{{this.id}}">{{this.name}}</a></td>
+            <td class="slds-size--1-of-2" data-label="Date">{{formatDate this.echosign_dev1__datesigned__c}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- / AGREEMENTS CARD -->
+  <!-- STUDENT FILE CARD -->
+  <div class="slds-card">
+    <div class="slds-card__header slds-grid">
+      <div class="slds-media slds-media--center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+          <svg aria-hidden="true" class="slds-icon slds-icon-standard-file slds-icon--small">
+            <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#file"></use>
+          </svg>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-text-heading--small slds-truncate">Student Files</h2>
+        </div>
+      </div>
+    </div>
+    <div class="slds-card__body">
+      <table class="slds-table slds-table--bordered slds-max-medium-table--stacked-horizontal slds-no-row-hover">
+        <thead>
+          <tr>
+            <th class="slds-text-heading--label slds-size--1-of-2" scope="col">Name</th>
+            <th class="slds-text-heading--label slds-size--1-of-2" scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each content}}
+          <tr>
+            <td><a href="/download/{{this.id}}">{{this.pathonclient}}</a></td>
+            <td>{{formatDate this.contentmodifieddate}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- / STUDENT FILE CARD -->
+  <!-- CONTACT ATTACHMENTS CARD -->
+  <div class="slds-card">
+    <div class="slds-card__header slds-grid">
+      <div class="slds-media slds-media--center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+          <svg aria-hidden="true" class="slds-icon slds-icon-doctype-attachment slds-icon--small">
+            <use xlink:href="/assets/icons/doctype-sprite/svg/symbols.svg#attachment"></use>
+          </svg>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-text-heading--small slds-truncate">Contact Attachments</h2>
+        </div>
+      </div>
+    </div>
+    <div class="slds-card__body">
+      <table class="slds-table slds-table--bordered slds-max-medium-table--stacked-horizontal slds-no-row-hover">
+        <thead>
+          <tr>
+            <th class="slds-text-heading--label slds-size--1-of-2" scope="col">Name</th>
+            <th class="slds-text-heading--label slds-size--1-of-2" scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each attachments}}
+          <tr>
+            <td><a href="/download/{{this.id}}">{{this.name}}</a></td>
+            <td>{{formatDate this.createddate}}</td>
+          </tr>
+          {{/each}}
+          {{#each contactfeed}}
+            <tr>
+            <td><a href="/download/{{this.id}}">{{this.contentfilename}}</a></td>
+            <td>{{formatDate this.createddate}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- / CONTACT ATTACHMENTS CARD -->
+  <!-- FINANCING PACKAGE ATTACHMENTS CARD -->
+  <div class="slds-card">
+    <div class="slds-card__header slds-grid">
+      <div class="slds-media slds-media--center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+          <svg aria-hidden="true" class="slds-icon slds-icon-doctype-attachment slds-icon--small">
+            <use xlink:href="/assets/icons/doctype-sprite/svg/symbols.svg#attachment"></use>
+          </svg>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-text-heading--small slds-truncate">Financing Package Attachments</h2>
+        </div>
+      </div>
+    </div>
+    <div class="slds-card__body">
+      <table class="slds-table slds-table--bordered slds-max-medium-table--stacked-horizontal slds-no-row-hover">
+        <thead>
+          <tr>
+            <th class="slds-text-heading--label slds-size--1-of-2" scope="col">Name</th>
+            <th class="slds-text-heading--label slds-size--1-of-2" scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each fpattachments}}
+          <tr>
+            <td><a href="/download/{{this.id}}">{{this.name}}</a></td>
+            <td>{{formatDate this.createddate}}</td>
+          </tr>
+          {{/each}}
+          {{#each fpfeed}}
+            <tr>
+            <td><a href="/download/{{this.id}}">{{this.contentfilename}}</a></td>
+            <td>{{this.createddate}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- / FINANCING PACKAGE ATTACHMENTS CARD -->
+</div>
+<!-- / PRIMARY CONTENT WRAPPER -->

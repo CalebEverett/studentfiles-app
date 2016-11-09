@@ -1,0 +1,40 @@
+<!-- MASTHEAD -->
+<p class="slds-text-heading--label slds-m-bottom--small">Career College of California</p>
+<!-- / MASTHEAD -->
+<div class="slds-container--small slds-container--center login-container">
+	<div class="slds-card">
+	  <div class="slds-card__header slds-grid">
+	    <div class="slds-media slds-media--center slds-has-flexi-truncate">
+	      <div class="slds-media__figure">
+					<span class="slds-icon__container">
+					  <svg aria-hidden="true" class="slds-icon slds-icon-text-error">
+					    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+					  </svg>
+					  <span class="slds-assistive-text">Warning Icon</span>
+					</span>
+	      </div>
+	      <div class="slds-media__body">
+	        <h2 class="slds-text-heading--small slds-truncate">Login Failed</h2>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="slds-card__body slds-container--center slds-m-bottom--large">
+			<div>
+				<div class="slds-media__figure">
+				  <img src="{{gphoto image.url}}" class="loginprofile round" alt="profile image" />
+			  </div>
+			</div>
+			<div class="slds-col--padded-large slds-m-bottom--xx-large slds-m-top--xx-large">
+			 <p>I'm sorry {{name.givenName}},<p>
+			 <p>It doesn't look like <span style="color:#c23934"><strong>{{emails.0.value}}</strong></span> is a valid school email address.</p>
+			 <p>School email addresses usually end in <strong>@mailccc.com</strong>.</p>
+			 <p>Make sure you're logged out of all other email accounts and try again.</p><br><br>
+				<a href="/auth" class="slds-button slds-button--destructive slds-button--fullwidth">Try Again</a>
+			</div>
+			<div class="slds-col--padded-large slds-m-top--medium">
+				<p>If you've forgotten your school gmail account name or password or have any other trouble logging in, please email <a href="mailto:info@careercalifornia.edu" >info@careercalifornia.edu</a>.</p>
+			</div>
+	  </div>
+	</div>
+</div>
+
