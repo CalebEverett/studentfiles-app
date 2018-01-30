@@ -1,3 +1,4 @@
+const debug = require('debug')('routes/index')
 const express = require('express')
 const router = express.Router()
 const Promise = require('bluebird')

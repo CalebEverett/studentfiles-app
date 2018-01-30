@@ -15,7 +15,6 @@ const { JWT_EXP, JWT_ISSUER, JWT_NAME, JWT_SECRET } = process.env
 const NodeCache = require('node-cache')
 const appCache = new NodeCache({ stdTTL: JWT_EXP, checkperiod: 120 })
 app.locals.appCache = appCache
-const adminIds = [process.env.SALESFORCE_ADMIN_ID, '003F000001OKbRtIAL']
 
 require('./lib/hbsHelpers')
 app.set('trust proxy', 1)
@@ -39,7 +38,8 @@ const loggedOutRoutes = [
 ]
 
 const studentRoutes = [
-  '/'
+  '/',
+  '/download/:id'
 ]
 
 app.use((req, res, next) => {
@@ -48,6 +48,7 @@ app.use((req, res, next) => {
     next()
   } else {
     if (!req.cookies.hasOwnProperty(JWT_NAME)) {
+      debug('no token name')
       res.redirect('/auth')
     } else {
       debug(`cookie: ${JSON.stringify(req.cookies[JWT_NAME], null, 4)}`)
@@ -67,23 +68,13 @@ app.use((req, res, next) => {
             debug('valid token')
             req.user = decodedToken.id
             debug(`appCache: ${JSON.stringify(appCache.get(req.user), null, 4)}`)
+            debug(url.parse(req.originalUrl).pathname)
             if (appCache.get(req.user)) appCache.ttl(req.user, JWT_EXP)
             next()
           }
         }
       })
     }
-  }
-})
-
-app.use((req, res, next) => {
-  if (loggedOutRoutes.indexOf(url.parse(req.originalUrl).pathname) !== -1) {
-    debug('admin routes: logged out route')
-    next()
-  } else if (adminIds.indexOf(req.user) !== -1 || studentRoutes.indexOf(url.parse(req.originalUrl).pathname) !== -1) {
-    next()
-  } else {
-    res.redirect('/auth')
   }
 })
 
